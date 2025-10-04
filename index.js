@@ -28,7 +28,6 @@ app.use(
   })
 );
 
-app.use(express.json());
 app.use(
   clerkMiddleware({
     secretKey: process.env.CLERK_SECRET_KEY,
@@ -44,6 +43,8 @@ ConnectToDatabase()
 
     // Mount routes AFTER DB connection
     app.use(webhookRoute);
+    app.use(express.json());
+
     app.use("/api/v1", routes);
 
     // 404 handler
