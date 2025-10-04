@@ -26,6 +26,8 @@ router.post(
     const clerkUserId = data.id;
 
     try {
+      console.log(`Executing : ${type}`);
+      
       if (type === "user.created") {
         const newUser = await User.create({
           clerkId: clerkUserId,
@@ -39,7 +41,7 @@ router.post(
               userId: newUser._id.toString(),
               role: null,
             },
-          });99999999999999999999999999999999999999999999999999999999999999999999
+          });
           logEvent({
             action: "USER_CREATED",
             description: `New user registered via Clerk (${newUser.email})`,
